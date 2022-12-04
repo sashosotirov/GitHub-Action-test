@@ -29,6 +29,7 @@ jobs:
           cat ${{ github.workspace }}/kubernetes_wildfly/README.md >> main/README.md
           cat main/README.md  
           echo ${{secrets.GITHUB_TOKEN}} 
+          cd ${{ github.workspace }}/main
           git add .
           git commit -m "run as script"
           git push origin main       
