@@ -12,13 +12,18 @@ jobs:
       - run: echo " The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo " The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       
-      - name: Checkout repo data
+      
+      - name:  Checkout repo data
         uses: actions/checkout@v3
+        with:
+          path: main
+
       - name: Checkout remote repo
         uses: actions/checkout@v3
         with:
           repository: sashosotirov/kubernetes_wildfly
           path: kubernetes_wildfly
+        
 
       - run: echo " The ${{ github.repository }} repository has been cloned to the runner."
       - name: List files in the repository
@@ -27,5 +32,5 @@ jobs:
           echo `cat README.md`
           git add .
           git commit -m "update README file"
-          git push:
+          git push
       - run: echo "This job's status is ${{ job.status }}."
