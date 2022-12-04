@@ -27,7 +27,8 @@ jobs:
       - name: List files in the repository
         run: |
           cat ${{ github.workspace }}/kubernetes_wildfly/README.md >> main/README.md
-          cat main/README.md          
+          cat main/README.md  
+          echo ${{secrets.GITHUB_TOKEN}}        
       - run: echo "This job's status is ${{ job.status }}."
      
       - name: Push changes
