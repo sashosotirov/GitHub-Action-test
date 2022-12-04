@@ -30,15 +30,13 @@ jobs:
           cat main/README.md  
           echo ${{secrets.GITHUB_TOKEN}} 
           cd ${{ github.workspace }}/main
-          git add .
-          git commit -m "run as script"
-          git push origin main       
+          
       - run: echo "This job's status is ${{ job.status }}."
      
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          
+          repository: ${{ github.workspace }}/main
           commit_message: Automated updating of the README file
           commit_user_name: sashosotirov
           commit_user_email: sotirov.sasho@gmail.com
