@@ -24,7 +24,6 @@ jobs:
       - name: List files in the repository
         run: |
           pwd
-          ls ${{ github.workspace }}/kubernetes_wildfly
-          echo "add some text again" >> `ls | grep README.md`          
+          cat ${{ github.workspace }}/kubernetes_wildfly/README.md >> README.md
           echo `cat README.md`
       - run: echo "This job's status is ${{ job.status }}."
