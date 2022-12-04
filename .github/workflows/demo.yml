@@ -28,8 +28,8 @@ jobs:
       - run: echo " The ${{ github.repository }} repository has been cloned to the runner."
       - name: List files in the repository
         run: |
-          cat ${{ github.workspace }}/kubernetes_wildfly/README.md >> README.md
-          echo `cat README.md`
+          cat ${{ github.workspace }}/kubernetes_wildfly/README.md >> main/README.md
+          echo `cat main/README.md`
           git add .
           git commit -m "update README file"
           git push
