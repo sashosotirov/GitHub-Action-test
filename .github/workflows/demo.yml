@@ -1,5 +1,5 @@
 name: copy Readme content to another repo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: ${{ github.actor }} is testing out GitHub Actions 
 
 on: 
   push:
@@ -9,10 +9,7 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: self-hosted
     steps:
-      - run: echo " The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo " The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      
-      
+          
       - name:  Checkout repo data
         uses: actions/checkout@v3
         with:
@@ -29,8 +26,16 @@ jobs:
       - name: List files in the repository
         run: |
           cat ${{ github.workspace }}/kubernetes_wildfly/README.md >> main/README.md
-          echo `cat main/README.md`
-          git add .
-          git commit -m "update README file "
-          git push
+          echo `cat main/README.md`          
       - run: echo "This job's status is ${{ job.status }}."
+      
+      - name: Commit files
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -a -m "Add changes"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
