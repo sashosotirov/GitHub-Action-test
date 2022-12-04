@@ -11,13 +11,20 @@ jobs:
     steps:
       - run: echo " The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo " The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
+      
+      - name: Checkout repo data
         uses: actions/checkout@v3
+      - name: Checkout remote repo
+        uses: actions/checkout@v3
+        with:
+          repository: sashosotirov/kubernetes_wildfly
+          path: kubernetes_wildfly
+
       - run: echo " The ${{ github.repository }} repository has been cloned to the runner."
       - name: List files in the repository
         run: |
           pwd
-          ls ${{ github.workspace }}
+          ls ${{ github.workspace }}/kubernetes_wildfly
           echo "add some text again" >> `ls | grep README.md`          
           echo `cat README.md`
       - run: echo "This job's status is ${{ job.status }}."
