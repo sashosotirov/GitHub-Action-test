@@ -41,3 +41,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
+          commit_user_name: sashosotirov 
+          commit_user_email: sotirov.sasho@gmail.com
+          commit_message: Automated Change
