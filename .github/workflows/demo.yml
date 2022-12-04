@@ -30,6 +30,8 @@ jobs:
         run: |
           cat ${{ github.workspace }}/kubernetes_wildfly/README.md >> main/README.md
           echo `cat main/README.md`
+          git config user.name sashosotirov
+          git config user.email sashosotirov@github.com
           git add .
           git commit -m "update README file"
           git push
