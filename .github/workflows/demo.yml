@@ -18,5 +18,6 @@ jobs:
         run: |
           pwd
           ls ${{ github.workspace }}
-          echo "add some text" >> ls `ls | grep README`
+          echo "add some text again" >> ls `ls | grep README.md`
+          cat README.md
       - run: echo "This job's status is ${{ job.status }}."
