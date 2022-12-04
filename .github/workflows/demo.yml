@@ -31,6 +31,6 @@ jobs:
           cat ${{ github.workspace }}/kubernetes_wildfly/README.md >> main/README.md
           echo `cat main/README.md`
           git add .
-          git commit -m "update README file"
+          git commit -m "update README file "
           git push
       - run: echo "This job's status is ${{ job.status }}."
