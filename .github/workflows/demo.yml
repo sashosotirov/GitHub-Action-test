@@ -14,8 +14,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: main
-          persist-credentials: false
-          fetch-depth: 0
+          
 
       - name: Checkout remote repo
         uses: actions/checkout@v3
@@ -30,15 +29,13 @@ jobs:
           cat ${{ github.workspace }}/kubernetes_wildfly/README.md >> main/README.md
           echo `cat main/README.md`          
       - run: echo "This job's status is ${{ job.status }}."
-      
-      - name: Commit files
-        run: |
-          git config --local user.email "sashosotirov"
-          git config --local user.name "sotirov.sasho@gmail.com"
-          git commit -a -m "Automated change"
+     
       - name: Push changes
-        uses: ad-m/github-push-action@master
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          commit_message: Automated updating of the README file
+          commit_user_name: sashosotirov
+          commit_user_email: sotirov.sasho@gmail.com
           
+
