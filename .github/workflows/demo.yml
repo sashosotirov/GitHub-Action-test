@@ -7,7 +7,7 @@ on:
 
 jobs:
   HW_Task_4:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
           
       - name:  Checkout repo data
@@ -37,7 +37,7 @@ jobs:
           git config user.name sashosotirov
           git config user.email sotirov.sasho@gmail.com
           git add .
-          git commit "Automatic Readme file update"
+          git commit -m "Automatic Readme file update"
           git push
         
      
