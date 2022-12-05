@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Explore-GitHub-Actions:
+  HW_Task_4:
     runs-on: ubuntu-latest
     steps:
           
