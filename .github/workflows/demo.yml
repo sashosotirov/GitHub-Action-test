@@ -1,13 +1,19 @@
+
 name: update Readme.md content
 run-name: ${{ github.actor }} is testing out HW_Task_4 
 
 on: 
   push:
-  workflow_dispatch:
+  
 
 jobs:
   HW_Task_4:
     runs-on: ubuntu-latest
+    env: 
+      REMOTEREPO_PATH: kubernetes_wildfly
+      EMAIL: sotirov.sasho@gmail.com
+           
+        
     steps:
           
       - name:  Checkout repo data
@@ -15,40 +21,27 @@ jobs:
         with:
           path: main
           
-
       - name: Checkout remote repo
         uses: actions/checkout@v3
         with:
           repository: sashosotirov/kubernetes_wildfly
-          path: kubernetes_wildfly
+          path: ${{ env.remoterepo_path }}
           token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains remote repo PAT
         
       - run: echo " The ${{ github.repository }} repositories have been cloned to the runner."
 
       - name: Update README.md file
         run: |
-          cat ${{ github.workspace }}/kubernetes_wildfly/README.md >> main/README.md
-          cat main/README.md  
-          echo ${{secrets.GITHUB_TOKEN}} 
-                    
+          cat ${{ github.workspace }}/${{ env.remoterepo_path }}/README.md >> main/README.md
+                              
       - name: Push changes
         run: |
           cd ${{ github.workspace }}/main
-          git config user.name sashosotirov
-          git config user.email sotirov.sasho@gmail.com
+          git config user.name ${{ github.actor }}
+          git config user.email ${{ env.email }}
           git add .
           git commit -m "Automatic Readme file update"
           git push
         
      
-     
-     
-      # - name: Push changes
-      #   uses: stefanzweifel/git-auto-commit-action@v4
-      #   with:
-      #     repository: ${{ github.workspace }}/main
-      #     commit_message: Automatic Readme file update
-      #     commit_user_name: sashosotirov
-      #     commit_user_email: sotirov.sasho@gmail.com
-          
-
+         
