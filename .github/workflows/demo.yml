@@ -32,13 +32,13 @@ jobs:
 
       - name: Update README.md file
         run: |
-          cat ${{ github.workspace }}/${{ env.remoterepo_path }}/README.md >> main/README.md
+          cat ${{ github.workspace }}/${{ env.REMOTEREPO_PATH }}/README.md >> main/README.md
                               
       - name: Push changes
         run: |
           cd ${{ github.workspace }}/main
           git config user.name ${{ github.actor }}
-          git config user.email ${{ env.email }}
+          git config user.email ${{ env.EMAIL }}
           git add .
           git commit -m "Automatic Readme file update"
           git push
