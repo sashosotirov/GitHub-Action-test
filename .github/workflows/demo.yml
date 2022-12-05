@@ -10,9 +10,9 @@ jobs:
   HW_Task_4:
     runs-on: ubuntu-latest
     env: 
-      REMOTEREPO_PATH: kubernetes_wildfly
+      REMOTE_REPO: sashosotirov/kubernetes_wildfly
       EMAIL: sotirov.sasho@gmail.com
-           
+      # `GH_PAT` is a secret that contains remote repo PAT     
         
     steps:
           
@@ -24,15 +24,15 @@ jobs:
       - name: Checkout remote repo
         uses: actions/checkout@v3
         with:
-          repository: sashosotirov/kubernetes_wildfly
-          path: ${{ env.REMOTEREPO_PATH }}
-          token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains remote repo PAT
+          repository: ${{ REMOTE_REPO }}
+          path: remoterepo
+          token: ${{ secrets.GH_PAT }} 
         
-      - run: echo " The ${{ github.repository }} repositories have been cloned to the runner."
+      - run: echo " The repositories have been cloned to the runner."
 
       - name: Update README.md file
         run: |
-          cat ${{ github.workspace }}/${{ env.REMOTEREPO_PATH }}/README.md >> main/README.md
+          cat ${{ github.workspace }}/remoterepo/README.md >> main/README.md
                               
       - name: Push changes
         run: |
