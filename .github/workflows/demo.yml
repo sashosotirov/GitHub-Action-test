@@ -17,7 +17,7 @@ jobs:
       - name: Checkout remote repo
         uses: actions/checkout@v3
         with:
-          repository: ${{ REMOTE_REPO }}
+          repository: sashosotirov/kubernetes_wildfly
           path: remoterepo
           token: ${{ secrets.GH_PAT }}
       - run: echo " The repositories have been cloned to the runner."
