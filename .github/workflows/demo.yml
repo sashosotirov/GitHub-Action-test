@@ -6,12 +6,10 @@ jobs:
   HW_Task_4:
     runs-on: ubuntu-latest
     env:
-      REMOTE_REPO: sashosotirov/kubernetes_wildfly
       EMAIL: sotirov.sasho@gmail.com
       # `GH_PAT` is a secret that contains remote repo PAT
     steps:
-      - run: echo $REMOTE_REPO, $EMAIL
-      - name: Checkout (${GITHUB_REPOSITORY})
+      - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v3
         with:
           path: main
