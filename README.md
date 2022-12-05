@@ -9,3 +9,5 @@ jb_task
 jb_task
 # kubernetes_wildfly
 jb_task
+# kubernetes_wildfly
+jb_task
