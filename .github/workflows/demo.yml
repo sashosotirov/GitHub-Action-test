@@ -1,35 +1,25 @@
-
 name: update Readme.md content
-run-name: ${{ github.actor }} is testing out HW_Task_4 
-
-on: 
-  push:
-  
-
+run-name: '${{ github.actor }} is testing out HW_Task_4'
+'on':
+  push: null
 jobs:
   HW_Task_4:
     runs-on: ubuntu-latest
-    env: 
-      REMOTE_REPO: "sashosotirov/kubernetes_wildfly"
+    env:
+      REMOTE_REPO: sashosotirov/kubernetes_wildfly
       EMAIL: sotirov.sasho@gmail.com
-      # `GH_PAT` is a secret that contains remote repo PAT     
-        
     steps:
-          
-      - name:  Checkout repo data
+      - name: Checkout repo data
         uses: actions/checkout@v3
         with:
           path: main
-          
       - name: Checkout remote repo
         uses: actions/checkout@v3
         with:
-          repository: ${{ REMOTE_REPO }}
+          repository: '${{ REMOTE_REPO }}'
           path: remoterepo
-          token: ${{ secrets.GH_PAT }} 
-        
+          token: '${{ secrets.GH_PAT }}'
       - run: echo " The repositories have been cloned to the runner."
-
       - name: Update README.md file
         run: |
           cat ${{ github.workspace }}/remoterepo/README.md >> main/README.md
@@ -42,6 +32,3 @@ jobs:
           git add .
           git commit -m "Automatic Readme file update"
           git push
-        
-     
-         
