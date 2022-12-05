@@ -6,7 +6,7 @@ jobs:
   HW_Task_4:
     runs-on: ubuntu-latest
     env:
-      REMOTE_REPO: sashosotirov/kubernetes_wildfly
+      SRC_REPO: sashosotirov/kubernetes_wildfly
       EMAIL: sotirov.sasho@gmail.com
     steps:
       - name: Checkout repo data
@@ -16,7 +16,7 @@ jobs:
       - name: Checkout remote repo
         uses: actions/checkout@v3
         with:
-          repository: '${{ REMOTE_REPO }}'
+          repository: '${{ SRC_REPO }}'
           path: remoterepo
           token: '${{ secrets.GH_PAT }}'
       - run: echo " The repositories have been cloned to the runner."
