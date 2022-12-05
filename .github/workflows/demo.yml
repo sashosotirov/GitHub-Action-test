@@ -10,11 +10,11 @@ jobs:
       EMAIL: sotirov.sasho@gmail.com
       # `GH_PAT` is a secret that contains remote repo PAT
     steps:
-      - name: Checkout repo data
+      - name: Checkout ${{ GITHUB_REPOSITORY }}
         uses: actions/checkout@v3
         with:
           path: main
-      - name: Checkout remote repo
+      - name: Checkout ${{ env.REMOTE_REPO }}
         uses: actions/checkout@v3
         with:
           repository: sashosotirov/kubernetes_wildfly
