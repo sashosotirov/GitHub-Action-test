@@ -30,10 +30,10 @@ jobs:
           cat ${{ github.workspace }}/kubernetes_wildfly/README.md >> main/README.md
           cat main/README.md  
           echo ${{secrets.GITHUB_TOKEN}} 
-          cd ${{ github.workspace }}/main
-          
+                    
       - name: Push changes
         run: |
+          cd ${{ github.workspace }}/main
           git config user.name sashosotirov
           git config user.email sotirov.sasho@gmail.com
           git add .
