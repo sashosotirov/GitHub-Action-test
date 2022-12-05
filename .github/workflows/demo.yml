@@ -16,9 +16,9 @@ jobs:
       - name: Checkout remote repo
         uses: actions/checkout@v3
         with:
-          repository: '${{ SRC_REPO }}'
+          repository: ${{ SRC_REPO }}
           path: remoterepo
-          token: '${{ secrets.GH_PAT }}'
+          token: ${{ secrets.GH_PAT }}
       - run: echo " The repositories have been cloned to the runner."
       - name: Update README.md file
         run: |
