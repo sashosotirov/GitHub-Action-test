@@ -10,7 +10,7 @@ jobs:
   HW_Task_4:
     runs-on: ubuntu-latest
     env: 
-      REMOTE_REPO: sashosotirov/kubernetes_wildfly
+      REMOTE_REPO: "sashosotirov/kubernetes_wildfly"
       EMAIL: sotirov.sasho@gmail.com
       # `GH_PAT` is a secret that contains remote repo PAT     
         
