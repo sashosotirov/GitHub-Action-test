@@ -1,5 +1,5 @@
 name: update Readme.md content
-run-name: '${{ github.actor }} is testing out HW_Task_4'
+run-name: ${{ github.actor }} is testing out HW_Task_4'
 'on':
   push: null
 jobs:
@@ -10,7 +10,8 @@ jobs:
       EMAIL: sotirov.sasho@gmail.com
       # `GH_PAT` is a secret that contains remote repo PAT
     steps:
-      - name: Checkout #${{ GITHUB_REPOSITORY }}
+      - run: echo $REMOTE_REPO, $EMAIL
+      - name: Checkout $GITHUB_REPOSITORY
         uses: actions/checkout@v3
         with:
           path: main
